@@ -1,6 +1,6 @@
 # halo-plugin-sitepush
 
-Halo 2.x Active Search Engine Push Plugin
+Halo 2.x Active Search Engine Push Plugin English version by [Manssizz](https://github.com/manssizz)
 
 ## Feature Overview
 This plugin can push links from article modules and page modules within the site to major search engine indexing platforms.
