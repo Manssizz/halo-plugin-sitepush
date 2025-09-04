@@ -1,14 +1,14 @@
 import dayjs from "dayjs";
-import "dayjs/locale/en-us";
+import "dayjs/locale/zh-cn";
 import timezone from "dayjs/plugin/timezone";
 import TimeAgo from "javascript-time-ago";
-import en from "javascript-time-ago/locale/en";
+import en from "javascript-time-ago/locale/zh";
 
 dayjs.extend(timezone);
 
-dayjs.locale("en-us");
+dayjs.locale("zh-cn");
 
-TimeAgo.addDefaultLocale(en);
+TimeAgo.addDefaultLocale(zh);
 
 export function formatDatetime(
   date: string | number | Date | undefined | null
