@@ -21,6 +21,4 @@ public class BasePushSetting {
     private Integer cleanOldLogDataDays = 0;
 
     private Integer cleanOldUniqueDataDays = 0;
-
-    private Boolean enableCanonical = Boolean.FALSE;
 }

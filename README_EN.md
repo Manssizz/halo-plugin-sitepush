@@ -8,7 +8,6 @@ This plugin can push links from article modules and page modules within the site
 ### Feature Characteristics
 - Supports verification of site indexing platforms
 - Supports pushing site links to major search engine indexing platforms
-- Supports adding canonical meta tags to pages for better SEO
 
 ### Currently Supported Indexing Platforms:
 - [x] [Baidu Indexing](https://ziyuan.baidu.com)
@@ -30,7 +29,6 @@ This plugin can push links from article modules and page modules within the site
 ## Configuration Instructions
 - If already authenticated via DNS records or other methods, no website verification code is needed.
 - This plugin's push supports proxy (supports no authentication and basic auth), after configuring this, ensure the proxy is available.
-- Enable the canonical meta tag option to add <link rel="canonical" href="..."> to page heads for better SEO detection.
 
 ## Participate in Development
 
