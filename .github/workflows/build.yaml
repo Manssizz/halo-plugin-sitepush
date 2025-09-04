@@ -4,7 +4,7 @@ on:
   push:
     tags:
       - '*'  # Trigger on any tag
-  workflow_dispatch:  
+  workflow_dispatch:  # Allow manual trigger
 
 jobs:
   build:
