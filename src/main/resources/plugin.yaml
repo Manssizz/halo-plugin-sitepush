@@ -13,8 +13,8 @@ spec:
   homepage: https://github.com/Stonewuu/halo-plugin-sitepush
   settingName: plugin-sitepush-settings
   configMapName: plugin-sitepush-config
-  displayName: "站点推送插件"
-  description: "该插件用于将站内页面主动推送至各大搜索引擎"
+  displayName: "Site Push Plugin"
+  description: "This plugin is used to actively push site pages to major search engines"
   license:
     - name: "GPL-3.0"
       url: "https://github.com/Stonewuu/halo-plugin-sitepush/blob/main/LICENSE"

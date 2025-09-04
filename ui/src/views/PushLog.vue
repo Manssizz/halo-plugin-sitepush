@@ -40,26 +40,26 @@ const { data, isLoading, isFetching, refetch } = useQuery({
 
 function handleClear() {
   Dialog.warning({
-    title: "清空记录",
-    description: "确定要清空所有推送记录吗？此操作不可恢复。",
+    title: "Clear Records",
+    description: "Are you sure you want to clear all push records? This operation cannot be undone.",
     async onConfirm() {
       await clearAllLogApi();
 
       refetch();
 
-      Toast.success("清空成功");
+      Toast.success("Cleared successfully");
     },
   });
 }
 </script>
 
 <template>
-  <VPageHeader title="推送日志">
+  <VPageHeader title="Push Logs">
     <template #icon>
       <IconUpload class="mr-2 self-center" />
     </template>
     <template #actions>
-      <VButton v-permission="['plugin:sitepush:manage']" type="danger" @click="handleClear()"> 清空 </VButton>
+      <VButton v-permission="['plugin:sitepush:manage']" type="danger" @click="handleClear()"> Clear </VButton>
     </template>
   </VPageHeader>
   <div class="m-0 md:m-4">
@@ -68,18 +68,18 @@ function handleClear() {
 
       <Transition v-else-if="!data?.items.length" appear name="fade">
         <VEmpty
-          message="当前还没有推送记录，请确保已经正确配置了搜索引擎的信息"
-          title="暂无推送记录"
+          message="There are no push records yet, please ensure the search engine information is configured correctly"
+          title="No Push Records"
         >
           <template #actions>
             <VSpace>
-              <VButton :loading="isFetching" @click="refetch()"> 刷新 </VButton>
+              <VButton :loading="isFetching" @click="refetch()"> Refresh </VButton>
               <VButton
                 v-permission="['plugin:sitepush:manage']"
                 type="secondary"
                 @click="$router.push('/plugins/PluginSitePush?tab=basic')"
               >
-                去配置
+                Go to Configuration
               </VButton>
             </VSpace>
           </template>

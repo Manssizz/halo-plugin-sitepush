@@ -29,7 +29,7 @@ export function timeAgo(
   const currentDate = new Date();
   const inputDate = new Date(date);
 
-  // 365天 * 24小时 * 60分钟 * 60秒 * 1000毫秒
+  // 365 days * 24 hours * 60 minutes * 60 seconds * 1000 milliseconds
   const oneYearInMilliseconds = 365 * 24 * 60 * 60 * 1000;
 
   if (currentDate.getTime() - inputDate.getTime() > oneYearInMilliseconds) {

@@ -2,6 +2,7 @@ package com.stonewu.sitepush;
 
 import com.stonewu.sitepush.setting.BaiduPushSetting;
 import com.stonewu.sitepush.setting.BaiduSettingProvider;
+import com.stonewu.sitepush.setting.BasePushSetting;
 import com.stonewu.sitepush.setting.BingPushSetting;
 import com.stonewu.sitepush.setting.BingPushSettingProvider;
 import com.stonewu.sitepush.setting.GooglePushSetting;
@@ -31,6 +32,16 @@ public class SiteHeadProcessor implements TemplateHeadProcessor {
         IElementModelStructureHandler structureHandler) {
         final IModelFactory modelFactory = context.getModelFactory();
 
+        Mono<BasePushSetting> basicMono = settingFetcher
+            .fetch(BasePushSetting.GROUP, BasePushSetting.class)
+            .defaultIfEmpty(new BasePushSetting())
+            .doOnNext(setting -> {
+                if (Boolean.TRUE.equals(setting.getEnableCanonical())) {
+                    String url = context.getRequest().getRequestURL().toString();
+                    model.add(modelFactory.createText("<link rel=\"canonical\" href=\"" + url + "\" />"));
+                }
+            });
+
         Mono<PushSettingProvider> baiduProviderMono = settingFetcher
             .fetch(BaiduPushSetting.GROUP, BaiduPushSetting.class)
             .defaultIfEmpty(new BaiduPushSetting())
@@ -46,10 +57,12 @@ public class SiteHeadProcessor implements TemplateHeadProcessor {
             .defaultIfEmpty(new GooglePushSetting())
             .map(GooglePushSettingProvider::new);
 
-        return Flux.concat(baiduProviderMono, bingProviderMono, googleProviderMono)
-            .filter(PushSettingProvider::isTagVerificationEnable)
-            .doOnNext(
-                provider -> model.add(modelFactory.createText(provider.getSiteVerificationMeta())))
-            .then();
+        return basicMono.then(
+            Flux.concat(baiduProviderMono, bingProviderMono, googleProviderMono)
+                .filter(PushSettingProvider::isTagVerificationEnable)
+                .doOnNext(
+                    provider -> model.add(modelFactory.createText(provider.getSiteVerificationMeta())))
+                .then()
+        );
     }
 }
