@@ -19,16 +19,16 @@ onMounted(() => {
 <template>
   <section id="plugin-starter">
     <div class="wrapper">
-      <span class="title"> 你已经成功运行起了插件！ </span>
-      <span class="message">你可以点击下方文档继续下一步</span>
+      <span class="title"> You have successfully run the plugin! </span>
+      <span class="message">You can click on the documentation below to continue to the next step</span>
       <div class="docs">
         <a
           href="https://docs.halo.run/developer-guide/plugin/publish"
           class="docs__box"
           target="_blank"
         >
-          <h2 class="docs__box-title"><RiShareCircleLine />发布一个插件</h2>
-          <span class="docs__box-message"> 了解如何与我们的社区分享您的扩展。 </span>
+          <h2 class="docs__box-title"><RiShareCircleLine />Publish a Plugin</h2>
+          <span class="docs__box-message"> Learn how to share your extensions with our community. </span>
           <span class="docs__box-arrow">
             <RiArrowRightSLine />
           </span>
@@ -38,8 +38,8 @@ onMounted(() => {
           class="docs__box"
           target="_blank"
         >
-          <h2 class="docs__box-title"><RiComputerLine />基础概览</h2>
-          <span class="docs__box-message"> 了解插件的项目结构、生命周期、资源配置等。 </span>
+          <h2 class="docs__box-title"><RiComputerLine />Basic Overview</h2>
+          <span class="docs__box-message"> Learn about the plugin's project structure, lifecycle, resource configuration, etc. </span>
           <span class="docs__box-arrow">
             <RiArrowRightSLine />
           </span>
@@ -49,8 +49,8 @@ onMounted(() => {
           class="docs__box group"
           target="_blank"
         >
-          <h2 class="docs__box-title"><RiBookReadLine />示例插件</h2>
-          <span class="docs__box-message">帮助你从 0 到 1 完成一个插件。</span>
+          <h2 class="docs__box-title"><RiBookReadLine />Example Plugin</h2>
+          <span class="docs__box-message">Help you complete a plugin from 0 to 1.</span>
           <span class="docs__box-arrow">
             <RiArrowRightSLine />
           </span>
@@ -60,8 +60,8 @@ onMounted(() => {
           class="docs__box"
           target="_blank"
         >
-          <h2 class="docs__box-title"><RiCodeBoxLine />API 参考</h2>
-          <span class="docs__box-message">插件中的 API 列表。</span>
+          <h2 class="docs__box-title"><RiCodeBoxLine />API Reference</h2>
+          <span class="docs__box-message">List of APIs in the plugin.</span>
           <span class="docs__box-arrow">
             <RiArrowRightSLine />
           </span>

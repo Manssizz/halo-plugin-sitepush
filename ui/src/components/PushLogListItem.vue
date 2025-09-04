@@ -26,24 +26,24 @@ interface SearchEngine {
 const searchEngines: SearchEngine[] = [
   {
     type: "baidu",
-    name: "百度",
+    name: "Baidu",
     icon: SimpleIconsBaidu,
     color: "#3385ff",
     checkUrl: `https://www.baidu.com/s?wd=${props.pushLog.pushUrl}`,
   },
   {
     type: "google",
-    name: "谷歌",
+    name: "Google",
     icon: LogosGoogleIcon,
     color: "#4285f4",
     checkUrl: `https://www.google.com/search?q=${props.pushLog.pushUrl}`,
   },
   {
     type: "bing",
-    name: "必应",
+    name: "Bing",
     icon: LogosBing,
     color: "#008373",
-    checkUrl: `https://cn.bing.com/search?q=${props.pushLog.pushUrl}`,
+    checkUrl: `https://bing.com/search?q=${props.pushLog.pushUrl}`,
   },
 ];
 
@@ -60,9 +60,9 @@ const state = computed(() => {
 
 const stateText = computed(() => {
   const { pushStatus } = props.pushLog;
-  if (pushStatus === 1) return "成功";
-  if (pushStatus === 0) return "失败";
-  return "未知";
+  if (pushStatus === 1) return "Success";
+  if (pushStatus === 0) return "Failure";
+  return "Unknown";
 });
 </script>
 
@@ -83,7 +83,7 @@ const stateText = computed(() => {
               </span>
             </div>
             <a
-              v-tooltip="'去搜索引擎检查是否收录'"
+              v-tooltip="'Check inclusion on search engine'"
               :href="getSearchEngine?.checkUrl"
               class="text-xs text-gray-600 truncate"
               target="_blank"
@@ -105,7 +105,7 @@ const stateText = computed(() => {
     <template #end>
       <VEntityField v-if="pushLog.metadata.deletionTimestamp">
         <template #description>
-          <VStatusDot v-tooltip="'删除中'" state="warning" animate />
+          <VStatusDot v-tooltip="'Deleting'" state="warning" animate />
         </template>
       </VEntityField>
       <VEntityField

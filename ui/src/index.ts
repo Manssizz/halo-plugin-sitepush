@@ -13,12 +13,12 @@ export default definePlugin({
         name: "SitePushLog",
         component: PushLog,
         meta: {
-          title: "站点收录推送",
+          title: "Site Inclusion Push",
           searchable: true,
-          description: "查阅站点收录推送日志",
+          description: "View site inclusion push logs",
           permissions: ["plugin:sitepush:view"],
           menu: {
-            name: "站点收录推送",
+            name: "Site Inclusion Push",
             group: "tool",
             icon: markRaw(IconUpload),
             priority: 0,

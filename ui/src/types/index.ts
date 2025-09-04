@@ -8,7 +8,7 @@ export interface PushLogs {
   pushUrl: string;
   pushType: "baidu" | "bing" | "google";
   pushStatus: number;
-  apiVersion: "todo.plugin.halo.run/v1alpha1"; // apiVersion=自定义模型的 group/version
+  apiVersion: "todo.plugin.halo.run/v1alpha1"; // apiVersion=custom model's group/version
   kind: "PushLog";
   metadata: Metadata;
   remark: string;
