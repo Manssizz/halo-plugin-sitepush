@@ -43,7 +43,7 @@ const searchEngines: SearchEngine[] = [
     name: "Bing",
     icon: LogosBing,
     color: "#008373",
-    checkUrl: `https://cn.bing.com/search?q=${props.pushLog.pushUrl}`,
+    checkUrl: `https://www.bing.com/search?q=${props.pushLog.pushUrl}`,
   },
 ];
 
