@@ -35,10 +35,10 @@ public class PushServiceImpl implements PushService {
     public boolean push(String siteUrl, PushStrategy pushStrategy, String slugKey,
         String... permalinks) {
         String cacheKey = pushStrategy.getPushType() + ":" + slugKey;
-        // 设置默认值为成功
+        // Set default value to success
         boolean allSuccess = true;
         for (String permalink : permalinks) {
-            // 没推送过或者推送过但是失败了的
+            // Not pushed before or pushed but failed
             if (isNeedPush(cacheKey)) {
                 int status = pushStrategy.push(siteUrl, slugKey, permalink);
                 allSuccess = allSuccess && status == 1;

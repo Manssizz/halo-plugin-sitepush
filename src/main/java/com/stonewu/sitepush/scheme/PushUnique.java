@@ -28,7 +28,7 @@ public class PushUnique extends AbstractExtension {
     @Schema(requiredMode = REQUIRED)
     private String pushUniqueKey;
 
-    @Schema(requiredMode = REQUIRED, description = "1：推送成功，0：推送失败，-1：跳过推送")
+    @Schema(requiredMode = REQUIRED, description = "1: Push successful, 0: Push failed, -1: Skip push")
     private Integer pushStatus;
 
     public String getCacheKey() {

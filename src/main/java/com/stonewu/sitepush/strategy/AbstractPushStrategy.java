@@ -75,7 +75,7 @@ public abstract class AbstractPushStrategy implements PushStrategy {
     }
 
     /**
-     * 通过设置更新请求策略
+     * Update request strategy through settings
      */
     protected void updateHttpRequestSender(PushSettingProvider settingProvider) {
         if (settingProvider.isUseProxy()) {

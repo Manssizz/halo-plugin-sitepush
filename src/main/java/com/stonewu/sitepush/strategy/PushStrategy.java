@@ -4,10 +4,10 @@ public interface PushStrategy {
     String getPushType();
 
     /**
-     * @param siteUrl 站点地址，不含/，例：https://www.stonewu.com
-     * @param key 用于缓存已经推送的key
-     * @param pageLinks 页面绝对访问路径，以/开头，例：/post/new-page
-     * @return 返回 -1 为没有进行推送, 1 为推送成功, 0 为推送失败
+     * @param siteUrl Site URL, without /, e.g.: https://www.stonewu.com
+     * @param key Key used for caching already pushed keys
+     * @param pageLinks Absolute access path of the page, starting with /, e.g.: /post/new-page
+     * @return Return -1 for no push performed, 1 for push successful, 0 for push failed
      */
     int push(String siteUrl, String key, String... pageLinks);
 

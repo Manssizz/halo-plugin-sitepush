@@ -14,27 +14,27 @@ public interface PushSettingProvider {
     Boolean isEnable();
 
     /**
-     * @return 是否启用标签验证
+     * @return Whether to enable tag verification
      */
     Boolean isTagVerificationEnable();
 
     /**
-     * @return 设置的字节码
+     * @return The setting class
      */
     Class<?> getSettingClass();
 
     /**
-     * @return 站点验证码
+     * @return Site verification code
      */
     String getSiteVerification();
 
     /**
-     * @return 访问口令
+     * @return Access token
      */
     String getAccess();
 
     /**
-     * @return html tag 验证的 meta 标签
+     * @return Meta tag for HTML tag verification
      */
     String getSiteVerificationMeta();
 

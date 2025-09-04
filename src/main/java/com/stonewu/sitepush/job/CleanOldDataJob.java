@@ -40,7 +40,7 @@ public class CleanOldDataJob {
             pushLogs.forEach(log -> {
                 client.delete(log);
             });
-            log.info("已清理 {} 之前的 {} 条log数据", instant, pushLogs.size());
+            log.info("Cleaned {} old log entries before {}", pushLogs.size(), instant);
         }
         if (cleanOldUniqueDataDays != null && cleanOldUniqueDataDays > 0) {
             long oldTime = Instant.now().getEpochSecond() - cleanOldUniqueDataDays * 24 * 60 * 60;
@@ -50,7 +50,7 @@ public class CleanOldDataJob {
             pushUniques.forEach(unique -> {
                 client.delete(unique);
             });
-            log.info("已清理 {} 之前的 {} 条key数据", instant, pushUniques.size());
+            log.info("Cleaned {} old key entries before {}", pushUniques.size(), instant);
         }
     }
 

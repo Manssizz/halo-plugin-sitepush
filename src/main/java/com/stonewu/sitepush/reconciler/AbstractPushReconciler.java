@@ -51,9 +51,9 @@ public abstract class AbstractPushReconciler implements Reconciler<Reconciler.Re
         if (extension == null) {
             return Result.doNotRetry();
         }
-        // 这里的写法为了保证引用的 SinglePage 或是其他 Extension 是完全初始化的
+        // This is written to ensure that the referenced SinglePage or other Extension is fully initialized
         if (extension.getPermalink() == null) {
-            // 为了防止出现一直为 null 的情况
+            // To prevent the situation where it is always null
             if (currentReGetTimes.get() >= MAX_GET_TIMES) {
                 return Result.doNotRetry();
             }
@@ -95,7 +95,7 @@ public abstract class AbstractPushReconciler implements Reconciler<Reconciler.Re
                 return true;
             }
         }
-        // 未启用不再重试，减少资源消耗
+        // If not enabled, do not retry to reduce resource consumption
         return false;
     }
 

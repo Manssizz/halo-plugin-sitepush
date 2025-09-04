@@ -5,351 +5,74 @@ metadata:
 spec:
   forms:
     - group: basic
-      label: 基本设置
+      label: Basic Settings
       formSchema:
         - $formkit: radio
           name: enable
           id: enable
           key: enable
-          label: 是否启用站点收录推送
-          help: 禁用后右方的所有站点推送都将不生效
+          label: Whether to enable site indexing push
+          help: After disabling, all site pushes on the right will not take effect
           value: false
           options:
-            - label: 启用
+            - label: Enable
               value: true
-            - label: 关闭
+            - label: Disable
               value: false
 
         - $formkit: text
           if: $get(enable).value
           name: siteUrl
-          label: 站点地址
-          placeholder: 请输入站点地址
-          help: 启用后必填，格式：http(s)://(www.)example.com ，结尾无需加斜杠，未填写将无法推送
+          label: Site URL
+          placeholder: Please enter the site URL
+          help: Required after enabling, format: http(s)://(www.)example.com, no slash at the end, cannot push if not filled
 
         - $formkit: number
           if: $get(enable).value
           name: retryInterval
-          label: 重试间隔时间 (分钟)
-          help: 默认为 360 分钟，设置为0代表不重试
+          label: Retry interval time (minutes)
+          help: Default is 360 minutes, set to 0 means no retry
           value: 360
 
         - $formkit: number
           if: $get(enable).value
           name: cleanOldLogDataDays
-          label: 每 1 小时清理指定天数前的旧推送 log 数据
-          help: 当值大于 0 才会清理，单位（天）
+          label: Clean old push log data before specified days every 1 hour
+          help: Only clean when value > 0, unit (days)
           value: 0
         - $formkit: number
           if: $get(enable).value
           name: cleanOldUniqueDataDays
-          label: 每 1 小时清理指定天数前的旧推送 key 数据
-          help: 当值大于 0 才会清理，单位（天），被清理的 url 后续会再次触发推送
+          label: Clean old push key data before specified days every 1 hour
+          help: Only clean when value > 0, unit (days), cleaned URLs will trigger push again later
           value: 0
 
     - group: baidu
-      label: 百度收录推送
+      label: Baidu Indexing Push
       formSchema:
         - $formkit: radio
           name: baiduEnableTagVerification
           id: baiduEnableTagVerification
           key: baiduEnableTagVerification
-          label: 是否启用标签验证
+          label: Whether to enable tag verification
           value: true
           options:
-            - label: 是
+            - label: Yes
               value: true
-            - label: 否
+            - label: No
               value: false
 
         - $formkit: text
           if: $get(baiduEnableTagVerification).value
           name: siteVerification
-          label: 百度站点验证（验证码）
-          placeholder: 格式：codeva-xxxxxxx
-          help: 申请地址：https://ziyuan.baidu.com/site/siteadd，验证网站使用HTML标签验证，代码中的content就是需要填写的验证码，修改后1分钟生效
+          label: Baidu site verification (verification code)
+          placeholder: Format: codeva-xxxxxxx
+          help: Application address: https://ziyuan.baidu.com/site/siteadd, website verification uses HTML tag verification, the content in the code is the verification code to fill in, takes effect 1 minute after modification
 
         - $formkit: radio
           name: baiduEnable
           id: baiduEnable
           key: baiduEnable
-          label: 是否启用百度收录推送
-          value: false
-          options:
-            - label: 启用
-              value: true
-            - label: 关闭
-              value: false
-
-        - $formkit: radio
-          if: $get(baiduEnable).value
-          name: baiduProxyEnable
-          id: baiduProxyEnable
-          key: baiduProxyEnable
-          label: 是否启用代理
-          value: false
-          options:
-            - label: 启用
-              value: true
-            - label: 关闭
-              value: false
-
-        - $formkit: radio
-          if: $get(baiduProxyEnable).value
-          name: baiduProxyType
-          label: 百度代理类型
-          value: HTTP
-          options:
-            - label: http
-              value: HTTP
-            - label: socks
-              value: SOCKS
-
-        - $formkit: text
-          if: $get(baiduProxyEnable).value
-          name: baiduProxyAddress
-          label: 代理地址
-          placeholder: 请输入代理地址
-
-        - $formkit: text
-          if: $get(baiduProxyEnable).value
-          name: baiduProxyPort
-          label: 代理端口
-          placeholder: 请输入代理端口
-
-        - $formkit: radio
-          if: $get(baiduProxyEnable).value
-          name: baiduProxyAuthEnable
-          label: 是否启用代理验证
-          id: baiduProxyAuthEnable
-          key: baiduProxyAuthEnable
-          value: false
-          options:
-            - label: 启用
-              value: true
-            - label: 关闭
-              value: false
-
-        - $formkit: text
-          if: $get(baiduProxyAuthEnable).value
-          name: baiduProxyUsername
-          label: 代理用户名
-          placeholder: 请输入代理用户名
-
-        - $formkit: password
-          if: $get(baiduProxyAuthEnable).value
-          name: baiduProxyPassword
-          label: 代理密码
-          placeholder: 请输入代理密码
-
-        - $formkit: text
-          if: $get(baiduEnable).value
-          name: token
-          label: 百度推送token
-          placeholder: 请输入token
-          help: token(准入密钥)请前往 百度搜索资源平台(https://ziyuan.baidu.com/)-搜索服务-普通收录 获取，未填写将无法推送
-
-    - group: bing
-      label: 必应收录推送
-      formSchema:
-        - $formkit: radio
-          name: bingEnableTagVerification
-          id: bingEnableTagVerification
-          key: bingEnableTagVerification
-          label: 是否启用标签验证
-          value: true
-          options:
-            - label: 是
-              value: true
-            - label: 否
-              value: false
-
-        - $formkit: text
-          if: $get(bingEnableTagVerification).value
-          name: bingSiteVerification
-          label: bing站点验证（验证码）
-          placeholder: 格式：FD2FCC31DFA40B22CF5FB9F88E8AC95A
-          help: 申请地址：https://www.bing.com/webmasters，验证方式选择HTML Meta Tag，代码中的content就是需要填写的验证码，修改后1分钟生效
-
-        - $formkit: radio
-          name: bingEnable
-          id: bingEnable
-          key: bingEnable
-          label: 是否启用必应(bing)收录推送
-          value: false
-          options:
-            - label: 启用
-              value: true
-            - label: 关闭
-              value: false
-
-        - $formkit: radio
-          if: $get(bingEnable).value
-          name: bingProxyEnable
-          id: bingProxyEnable
-          key: bingProxyEnable
-          label: 是否启用代理
-          value: false
-          options:
-            - label: 启用
-              value: true
-            - label: 关闭
-              value: false
-        - $formkit: radio
-          if: $get(bingProxyEnable).value
-          name: bingProxyType
-          label: 必应代理类型
-          value: HTTP
-          options:
-            - label: http
-              value: HTTP
-            - label: socks
-              value: SOCKS
-        - $formkit: text
-          if: $get(bingProxyEnable).value
-          name: bingProxyAddress
-          label: 代理地址
-          placeholder: 请输入代理地址
-
-        - $formkit: text
-          if: $get(bingProxyEnable).value
-          name: bingProxyPort
-          label: 代理端口
-          placeholder: 请输入代理端口
-
-        - $formkit: radio
-          if: $get(bingProxyEnable).value
-          name: bingProxyAuthEnable
-          label: 是否启用代理验证
-          id: bingProxyAuthEnable
-          key: bingProxyAuthEnable
-          value: false
-          options:
-            - label: 启用
-              value: true
-            - label: 关闭
-              value: false
-
-        - $formkit: text
-          if: $get(bingProxyAuthEnable).value
-          name: bingProxyUsername
-          label: 代理用户名
-          placeholder: 请输入代理用户名
-
-        - $formkit: password
-          if: $get(bingProxyAuthEnable).value
-          name: bingProxyPassword
-          label: 代理密码
-          placeholder: 请输入代理密码
-
-        - $formkit: text
-          if: $get(bingEnable).value
-          name: apikey
-          label: 必应apikey
-          placeholder: 请输入apikey
-          help: apikey请前往 Bing Webmaster Tools(https://www.bing.com/webmasters) -右上角齿轮图标设置 - API访问(管理凭据) - API密钥 获取，未填写将无法推送
-
-    - group: google
-      label: 谷歌收录推送
-      formSchema:
-        - $formkit: radio
-          name: googleEnableTagVerification
-          id: googleEnableTagVerification
-          key: googleEnableTagVerification
-          label: 是否启用标签验证
-          value: true
-          options:
-            - label: 是
-              value: true
-            - label: 否
-              value: false
-
-        - $formkit: text
-          if: $get(googleEnableTagVerification).value
-          name: googleSiteVerification
-          label: google站点验证（验证码）
-          placeholder: 格式：3MKyENvsAfOqs9LL1hxJkxseEMZnwisZVaG8ezodv_E
-          help: 申请地址：https://search.google.com/search-console，验证方式选择 HTML标记，代码中的content就是需要填写的验证码，修改后1分钟生效
-
-        - $formkit: radio
-          name: googleEnable
-          id: googleEnable
-          key: googleEnable
-          label: 是否启用谷歌(google)收录推送
-          value: false
-          options:
-            - label: 启用
-              value: true
-            - label: 关闭
-              value: false
-
-        - $formkit: radio
-          if: $get(googleEnable).value
-          name: googleProxyEnable
-          id: googleProxyEnable
-          key: googleProxyEnable
-          label: 是否启用代理
-          value: false
-          options:
-            - label: 启用
-              value: true
-            - label: 关闭
-              value: false
-
-        - $formkit: radio
-          if: $get(googleProxyEnable).value
-          name: googleProxyType
-          label: 谷歌代理类型
-          value: HTTP
-          options:
-            - label: http
-              value: HTTP
-            - label: socks
-              value: SOCKS
-
-        - $formkit: text
-          if: $get(googleProxyEnable).value
-          name: googleProxyAddress
-          label: 谷歌代理地址
-          placeholder: 请输入代理地址
-
-        - $formkit: text
-          if: $get(googleProxyEnable).value
-          name: googleProxyPort
-          label: 谷歌代理端口
-          placeholder: 请输入代理端口
-
-        - $formkit: radio
-          if: $get(googleProxyEnable).value
-          name: googleProxyAuthEnable
-          label: 是否启用代理验证
-          id: googleProxyAuthEnable
-          key: googleProxyAuthEnable
-          value: false
-          options:
-            - label: 启用
-              value: true
-            - label: 关闭
-              value: false
-
-        - $formkit: text
-          if: $get(googleProxyAuthEnable).value
-          name: googleProxyUsername
-          label: 代理用户名
-          placeholder: 请输入代理用户名
-
-        - $formkit: password
-          if: $get(googleProxyAuthEnable).value
-          name: googleProxyPassword
-          label: 代理密码
-          placeholder: 请输入代理密码
-
-        - $formkit: text
-          if: $get(googleEnable).value
-          name: credentialsJson
-          label: google凭据json文件内容
-          placeholder: 请将json文件的所有内容粘贴至此
-          help: 教程地址：https://erzbir.com/archives/useGoogleIndexAPI
 
 
 

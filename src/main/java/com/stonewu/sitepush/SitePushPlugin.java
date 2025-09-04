@@ -11,7 +11,7 @@ import run.halo.app.extension.SchemeManager;
 import run.halo.app.plugin.BasePlugin;
 
 /**
- * 站点收录推送插件
+ * Site indexing push plugin
  *
  * @author stonewu
  * @since 1.0.0
@@ -57,6 +57,6 @@ public class SitePushPlugin extends BasePlugin {
         fluxPushUnique.doOnNext(pushUnique ->
                 GlobalCache.PUSH_CACHE.put(pushUnique.getCacheKey(), pushUnique))
             .subscribe();
-        log.info("成功读取已推送链接 {} 个", fluxPushUnique.count().block());
+        log.info("Successfully read {} pushed links", fluxPushUnique.count().block());
     }
 }
