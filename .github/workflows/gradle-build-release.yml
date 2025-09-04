@@ -50,11 +50,11 @@ jobs:
           draft: false
           prerelease: false
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BUILD_TOKEN }}
 
       - name: Upload JAR to Release
         uses: softprops/action-gh-release@v1
         with:
           files: ./artifact/*.jar
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BUILD_TOKEN }}
